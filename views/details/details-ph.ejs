@@ -1,0 +1,122 @@
+<%- include('partials/header') %>
+    <!-- Navbar -->
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><span>Hidro</span>Ponik</a>
+			</div>
+		</div>
+	</nav>
+	<!-- END Navbar -->
+
+	<!-- Sidebar -->
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<div class="profile-sidebar">
+			<!-- Pictures Profile -->
+			<div class="profile-userpic">
+				<img src="img/user.png" class="img-responsive" alt="">
+			</div>
+
+			<!-- Username & Status Profile -->
+			<div class="profile-usertitle">
+				<% if (biodata.length > 0) { %>
+					<% biodata.forEach(function(item, index) { %>
+						<div class="profile-usertitle-name"><%= item.username %></div>
+						<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+					<% }) %>
+				<% } %>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="divider"></div>
+
+		<!-- Menu Sidebar -->
+		<ul class="nav menu">
+			<li class="active"><a href="/"><em class="fas fa-tachometer-alt">&nbsp;</em> Dashboard</a></li>
+			<li><a href="/penjadwalan"><em class="far fa-calendar-alt">&nbsp;</em> Penjadwalan</a></li>
+			<li><a href="/profile"><em class="fas fa-user">&nbsp;</em> Profile</a></li>
+			<li><a href="/logout"><em class="fas fa-power-off">&nbsp;</em> Logout</a></li>
+		</ul>
+		<!-- END Menu Sidebar -->
+	</div>
+	<!-- END Sidebar -->
+	
+	<!-- Content -->
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active"><a href="/">Dashboard</a></li>
+				<li class="active">Detail pH</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<h3>Detail PH dalam Air</h3>
+                <div class="clearfix"></div>
+			</div>
+		</div><!--/.row-->
+
+		<div class="row">
+			<div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Data Realtime</div>
+					<div class="panel-body">
+						<img src="img/hidroponik.png" alt="img" class="img-responsive img-posisi" height="150px" width="150px">
+						<br>
+						<div class="col-md-12 col-sm-12 col-xs-12">
+                            <h6 class="judul-details">PH dalam Air</h6>
+                            <h2 id="hidro_ph_value" class="value-details">0</h2>
+                            <p class="text-details"></p>
+                        </div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-8 col-sm-12 col-xs-12">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">Tabel pH Air</div>
+							<div class="panel-body">
+								<table id="table_ph" class="display table-striped table-bordered" style="width: 100%;">
+									<% if (ph.length > 0) { %>
+										<thead>
+											<tr>
+												<th width="10px">ID</th>
+												<th width="300px">Waktu</th>
+												<th width="90px">pH Air</th>
+											</tr>
+										</thead>
+										<tbody>
+											<% ph.forEach(function(item, index) { %>
+												<tr>
+													<td><%= item.id %></td>
+													<td><%= item.waktu %></td>
+													<td><%= item.data %></td>
+												</tr>
+											<% }) %>
+										</tbody>
+									<% } else { %>
+										<p class="text-center">No data found</p>
+									<% } %>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<!-- END Content -->
+<%- include('partials/footer') %>

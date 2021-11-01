@@ -1,0 +1,562 @@
+<%- include('partials/header') %>
+    <!-- Navbar -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><span>Hidro</span>Ponik</a>
+            </div>
+        </div>
+    </nav>
+    <!-- END Navbar -->
+
+    <!-- Sidebar -->
+    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+        <div class="profile-sidebar">
+            <!-- Pictures Profile -->
+            <div class="profile-userpic">
+                <img src="img/user.png" class="img-responsive" alt="">
+            </div>
+
+            <!-- Username & Status Profile -->
+            <div class="profile-usertitle">
+                <% if (biodata.length > 0 ) { %>
+                    <% biodata.forEach(function(item, index) { %>
+                        <div class="profile-usertitle-name"><%= item.username %></div>
+                        <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+                    <% }) %>
+                <% } %>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="divider"></div>
+
+        <!-- Menu Sidebar -->
+        <ul class="nav menu">
+            <li><a href="/"><em class="fas fa-tachometer-alt">&nbsp;</em> Dashboard</a></li>
+            <li class="active"><a href="/penjadwalan"><em class="far fa-calendar-alt">&nbsp;</em> Penjadwalan</a></li>
+            <li><a href="/profile"><em class="fas fa-user">&nbsp;</em> Profile</a></li>
+            <li><a href="/logout"><em class="fas fa-power-off">&nbsp;</em> Logout</a></li>
+        </ul>
+        <!-- END Menu Sidebar -->
+    </div>
+    <!-- END Sidebar -->
+
+    <!-- Content -->
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#">
+                    <em class="fa fa-home"></em>
+                </a></li>
+                <li class="active">Penjadwalan</li>
+            </ol>
+        </div><!--/.row-->
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Penjadwalan</h1>
+            </div>
+        </div><!--/.row-->
+
+        <!-- Isi -->
+        <div class="row">
+            <!-- Panel Penyiraman -->
+            <div class="col-xs-12 col-md-6 col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Kontrol Pengaliran
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6 no-padding border-right">
+                                <h4 class="judul-mode">Mode Pengaliran</h4>
+                                <label class="switch switch-posisi">
+                                    <input type="checkbox" id="hidro_pump_toggle" name="penyiraman" <% if(mode[0].status == 'auto') { %> checked <% } %>>
+                                    <span class="slider round"></span>
+                                </label>
+                                <span class="switch-title" id="hidro_pump_title"><% if(mode[0].status == 'auto') { %> Auto <% } else { %> Manual <% } %></span>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
+                                <div id="hidro_switch_pump_container" <% if(mode[0].status == 'auto') { %> style="display:none" <% } %>>
+                                    <h4 class="judul-mode">Switch Pompa</h4>
+                                    <label class="switch switch-posisi">
+                                        <input type="checkbox" id="hidro_switch_pump_toggle" name="penyiraman" <% if(mode[2].status == 'on') { %> checked <% } %>>
+                                        <span class="slider round"></span>
+                                    </label>
+                                    <span class="switch-title" id="hidro_switch_pump_title"><% if(mode[2].status == 'on') { %> ON <% } else { %> OFF <% } %></span>
+                                </div>
+                                <div id="hidro_periode_pump_container">
+                                    <h4 class="judul-mode">Penyiraman Manual</h4>
+                                    <label class="switch switch-posisi">
+                                        <input type="checkbox" id="hidro_switch_periode_toggle" name="penyiraman" <% if(periode[0].status == '2') { %> checked <% } %>>
+                                        <span class="slider round"></span>
+                                    </label>
+                                    <span class="switch-title" id="hidro_switch_periode_title"><% if(periode[0].status == '1') { %> 1 Periode <% } else { %> 2 Periode <% } %></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Display Otomatis -->
+                <div id="hidro_pump_container" <% if(mode[0].status == 'manual') { %> style="display:none" <% } %>>
+                    <div id="hidro_periode_satu" <% if(periode[0].status == '2') { %> style="display:none" <% } %>>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Jadwal Pengaliran Air
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <% if (pump_value.length > 0) { %>
+                                            <% pump_value.forEach(function(item, index) { %>
+                                                <div class="row">
+                                                    <div class="col-xs-6 col-md-6">
+                                                        <div>
+                                                            <img src="img/pagi.png" class="img-responsive img-jadwal no-padding" alt="" height="60px" width="70px">
+                                                        </div>
+                                                        <div class="jadwal-status">
+                                                            <h4>Pagi Hari</h4>
+                                                            <span> <%= item.jadwal_pagi %> </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-md-6">
+                                                        <div>
+                                                            <img src="img/pagi.png" class="img-responsive img-jadwal no-padding" alt="" height="60px" width="70px">
+                                                        </div>
+                                                        <div class="jadwal-status">
+                                                            <h4>Sore Hari</h4>
+                                                            <span> <%= item.jadwal_sore %> </span>
+                                                        </div>
+                                                    </div>
+                                                </div><!--/.row -->
+                                            <% }) %>
+                                        <% } %>
+                                    </div>
+                                </div><!--/.row -->
+                            </div>
+                        </div>
+    
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Set Penjadwalan
+                            </div>
+                            <div class="panel-body">
+                                <form id="penjadwalan_form_penyiraman" action="/update_jadwal_pump" method="POST">
+                                    <div class="row">
+                                        <!-- Set Siram Pagi -->
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="title-jadwal">
+                                                <span>Pagi Hari</span>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <div class="form-group">
+                                                    <select name="jam_pagi_pump" id="jam_pagi_pump" class="form-control">
+                                                        <% for (var i = 0; i<=23; i++) { %>
+                                                            <option value="<%= i %>"><%= i %></option>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <div class="form-group">
+                                                    <div>
+                                                    </div>
+                                                    <select name="menit_pagi_pump" id="menit_pagi_pump" class="form-control">
+                                                        <% for (var i = 0; i<=59; i++) { %>
+                                                            <option value="<%= i %>"><%= i %></option>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <!-- Set Siram Sore -->
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="title-jadwal">
+                                                <span>Sore Hari</span>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <div class="form-group">
+                                                    <select name="jam_sore_pump" id="jam_sore_pump" class="form-control">
+                                                        <% for (var i = 0; i<=23; i++) { %>
+                                                            <option value="<%= i %>"><%= i %></option>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <div class="form-group">
+                                                    <div>
+                                                    </div>
+                                                    <select name="menit_sore_pump" id="menit_sore_pump" class="form-control">
+                                                        <% for (var i = 0; i<=59; i++) { %>
+                                                            <option value="<%= i %>"><%= i %></option>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="submit" class="btn btn-primary btn-size center-block" onclick="setPump()" value="SET">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="hidro_periode_dua"  <% if(periode[0].status == '1') { %> style="display:none" <% } %>>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Jadwal Pengaliran Air
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <% if (pump_periode.length > 0) { %>
+                                            <% pump_periode.forEach(function(item, index) { %>
+                                                <div class="row">
+                                                    <div class="col-xs-6 col-md-6">
+                                                        <div>
+                                                            <img src="img/pagi.png" class="img-responsive img-jadwal no-padding" alt="" height="60px" width="70px">
+                                                        </div>
+                                                        <div class="jadwal-status">
+                                                            <h4>Pagi Hari</h4>
+                                                            <span> <%= item.jadwal_pagi1 %> </span> <span> - </span> <span> <%= item.jadwal_pagi2 %> </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-md-6">
+                                                        <div>
+                                                            <img src="img/pagi.png" class="img-responsive img-jadwal no-padding" alt="" height="60px" width="70px">
+                                                        </div>
+                                                        <div class="jadwal-status">
+                                                            <h4>Sore Hari</h4>
+                                                            <span> <%= item.jadwal_sore1 %> </span> <span> - </span> <span> <%= item.jadwal_sore2 %> </span>
+                                                        </div>
+                                                    </div>
+                                                </div><!--/.row -->
+                                            <% }) %>
+                                        <% } %>
+                                    </div>
+                                </div><!--/.row -->
+                            </div>
+                        </div>
+    
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Set Penjadwalan
+                            </div>
+                            <div class="panel-body">
+                                <form id="penjadwalan_form_penyiraman" action="/update_jadwal_periode_pagi" method="POST">
+                                    <div class="row">
+                                        <!-- Set Siram Pagi -->
+                                        <div class="col-md-5 col-sm-5 col-xs-5">
+                                            <div class="title-jadwal">
+                                                <span>Pagi Hari</span>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6" style="padding-right: 0px;">
+                                                <div class="form-group">
+                                                    <select name="jam_pagi_pump1" id="jam_pagi_pump1" class="form-control">
+                                                        <% for (var i = 0; i<=23; i++) { %>
+                                                            <option value="<%= i %>"><%= i %></option>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6" style="padding-right: 0px;">
+                                                <div class="form-group">
+                                                    <div>
+                                                    </div>
+                                                    <select name="menit_pagi_pump1" id="menit_pagi_pump1" class="form-control">
+                                                        <% for (var i = 0; i<=59; i++) { %>
+                                                            <option value="<%= i %>"><%= i %></option>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <!-- Set Siram Sore -->
+                                        <div class="col-md-5 col-sm-5 col-xs-5" style="margin-top: 35px;">
+                                            <div class="col-md-6 col-sm-6 col-xs-6" style="padding-right: 0px;">
+                                                <div class="form-group">
+                                                    <select name="jam_pagi_pump2" id="jam_pagi_pump2" class="form-control">
+                                                        <% for (var i = 0; i<=23; i++) { %>
+                                                            <option value="<%= i %>"><%= i %></option>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6" style="padding-right: 0px;">
+                                                <div class="form-group">
+                                                    <div>
+                                                    </div>
+                                                    <select name="menit_pagi_pump2" id="menit_pagi_pump2" class="form-control">
+                                                        <% for (var i = 0; i<=59; i++) { %>
+                                                            <option value="<%= i %>"><%= i %></option>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2 col-sm-2 col-xs-2" style="margin-top: 35px; padding-left: 0px;">
+                                            <button type="submit" class="btn btn-primary btn-md center-block">SET</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <form id="penjadwalan_form_penyiraman" action="/update_jadwal_periode_sore" method="POST">
+                                    <div class="row">
+                                        <!-- Set Siram Pagi -->
+                                        <div class="col-md-5 col-sm-5 col-xs-5">
+                                            <div class="title-jadwal">
+                                                <span>Sore Hari</span>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6" style="padding-right: 0px;">
+                                                <div class="form-group">
+                                                    <select name="jam_sore_pump1" id="jam_sore_pump1" class="form-control">
+                                                        <% for (var i = 0; i<=23; i++) { %>
+                                                            <option value="<%= i %>"><%= i %></option>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6" style="padding-right: 0px;">
+                                                <div class="form-group">
+                                                    <div>
+                                                    </div>
+                                                    <select name="menit_sore_pump1" id="menit_sore_pump1" class="form-control">
+                                                        <% for (var i = 0; i<=59; i++) { %>
+                                                            <option value="<%= i %>"><%= i %></option>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <!-- Set Siram Sore -->
+                                        <div class="col-md-5 col-sm-5 col-xs-5" style="margin-top: 35px;">
+                                            <div class="col-md-6 col-sm-6 col-xs-6" style="padding-right: 0px;">
+                                                <div class="form-group">
+                                                    <select name="jam_sore_pump2" id="jam_sore_pump2" class="form-control">
+                                                        <% for (var i = 0; i<=23; i++) { %>
+                                                            <option value="<%= i %>"><%= i %></option>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6" style="padding-right: 0px;">
+                                                <div class="form-group">
+                                                    <div>
+                                                    </div>
+                                                    <select name="menit_sore_pump2" id="menit_sore_pump2" class="form-control">
+                                                        <% for (var i = 0; i<=59; i++) { %>
+                                                            <option value="<%= i %>"><%= i %></option>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2 col-sm-2 col-xs-2" style="margin-top: 33px; padding-left: 0px;">
+                                            <button type="submit" class="btn btn-primary btn-md center-block">SET</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Nilai Batasan PH</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <input id="hidro_min_ph" class="form-control" type="number" name="minPH" placeholder="Min PH" autofocus>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <input id="hidro_max_ph" class="form-control" type="number" name="maxPH" placeholder="Max PH" autofocus>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="submit" class="btn btn-primary btn-size center-block" onclick="setBatasPH()" value="UBAH">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.row -->
+
+            <!-- Panel Lampu -->
+            <div class="col-xs-12 col-md-6 col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Kontrol Pencahayaan
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6 no-padding border-right">
+                                <h4 class="judul-mode">Mode Pencahayaan</h4>
+                                <label class="switch switch-posisi">
+                                    <input type="checkbox" id="hidro_growlight_toggle" name="lampu" <% if(mode[1].status == 'auto') { %> checked <% } %>>
+                                    <span class="slider round"></span>
+                                </label>
+                                <span class="switch-title" id="hidro_growlight_title"><% if(mode[1].status == 'auto') { %> Auto <% } else { %> Manual <% } %></span>
+                            </div>
+                            <div id="hidro_switch_growlight_container" class="col-md-6  col-sm-6 col-xs-6 no-padding" <% if(mode[1].status == 'auto') { %> style="display:none" <% } %>>
+                                <h4 class="judul-mode">Switch Growlight</h4>
+                                <label class="switch switch-posisi">
+                                    <input type="checkbox" id="hidro_switch_growlight_toggle" name="penyiraman" <% if(mode[3].status == 'on') { %> checked <% } %>>
+                                    <span class="slider round"></span>
+                                </label>
+                                <span class="switch-title" id="hidro_switch_growlight_title"><% if(mode[3].status == 'on') { %> ON <% } else { %> OFF <% } %></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Display Lampu Otomatis -->
+                <div id="hidro_growlight_container" <% if(mode[1].status == 'manual') { %> style="display:none" <% } %>>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Jadwal Pencahayaan Growlight
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <% if (growlight_value.length > 0) { %>
+                                        <% growlight_value.forEach(function(item, index) { %>
+                                            <div class="row">
+                                                <div class="col-xs-6 col-md-6">
+                                                    <div>
+                                                        <img src="img/pagi.png" class="img-responsive img-jadwal no-padding" alt="" height="60px" width="70px">
+                                                    </div>
+                                                    <div class="jadwal-status">
+                                                        <h4>Pagi Hari</h4>
+                                                        <span> <%= item.jadwal_pagi %> </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6 col-md-6">
+                                                    <div>
+                                                        <img src="img/pagi.png" class="img-responsive img-jadwal no-padding" alt="" height="60px" width="70px">
+                                                    </div>
+                                                    <div class="jadwal-status">
+                                                        <h4>Malam Hari</h4>
+                                                        <span> <%= item.jadwal_sore %> </span>
+                                                    </div>
+                                                </div>
+                                            </div><!--/.row -->
+                                        <% }) %>
+                                    <% } %>
+                                </div>
+                            </div><!--/.row -->
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Set Penjadwalan
+                        </div>
+                        <div class="panel-body">
+                            <form id="penjadwalan_form_pencahayaan" action="/update_jadwal_growlight" method="POST">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="title-jadwal">
+                                            <span>Pagi Hari</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="form-group">
+                                                <select name="jam_pagi_growlight" id="jam_pagi_growlight" class="form-control">
+                                                    <% for (var i = 0; i<=23; i++) { %>
+                                                        <option value="<%= i %>"><%= i %></option>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="form-group">
+                                                <div>
+                                                </div>
+                                                <select name="menit_pagi_growlight" id="menit_pagi_growlight" class="form-control">
+                                                    <% for (var i = 0; i<=59; i++) { %>
+                                                        <option value="<%= i %>"><%= i %></option>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="title-jadwal">
+                                            <span>Malam Hari</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="form-group">
+                                                <select name="jam_sore_growlight" id="jam_sore_growlight" class="form-control">
+                                                    <% for (var i = 0; i<=23; i++) { %>
+                                                        <option value="<%= i %>"><%= i %></option>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="form-group">
+                                                <div>
+                                                </div>
+                                                <select name="menit_sore_growlight" id="menit_sore_growlight" class="form-control">
+                                                    <% for (var i = 0; i<=59; i++) { %>
+                                                        <option value="<%= i %>"><%= i %></option>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input type="submit" class="btn btn-primary btn-size center-block" onclick="setGrowlight()" value="SET">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Nilai Batasan Lux</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <input id="hidro_min_lux" class="form-control" type="number" name="minLUX" placeholder="Min Lux" autofocus>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <input id="hidro_max_lux" class="form-control" type="number" name="maxLUX" placeholder="Max Lux" autofocus>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="submit" class="btn btn-primary btn-size center-block" onclick="setBatasLUX()" value="UBAH">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END Isi -->
+    </div>
+    <!-- END Content -->
+<%- include('partials/footer') %>

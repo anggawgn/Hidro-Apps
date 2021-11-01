@@ -1,0 +1,669 @@
+.space {
+    margin: 10px auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+}
+
+.clearfix {
+    margin: 10px auto;
+}
+
+.no-space {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Panel Register */
+.label-registrasi {
+    color: #575e61;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.btn-register {
+    text-transform: uppercase;
+    border-radius: 10px !important;
+}
+
+/* Notifikasi */
+.footer-link {
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-bottom: 0px;
+}
+
+/* Index */
+.current-judul {
+    margin-top: 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+.current-icon {
+    background-color: rgb(30, 144, 255);
+    border-radius: 50%;
+    color: #ffff;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 60px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    margin-top: 13px;
+}
+
+.current {
+    text-align: right;
+    font-size: 2em;
+}
+
+.current p {
+    margin-bottom: 0px;
+}
+
+.current .current-category {
+    color: #9a9a9a;
+    font-size: 18px;
+    line-height: 1.4em;
+}
+
+.current-value {
+    margin-top: 0;
+    font-size: 35px;
+    font-weight: 300;
+}
+
+.current-title {
+    font-size: 22px;
+}
+
+.current-posisi {
+    margin: 10px auto;
+}
+
+.btn-detail {
+    border-radius: 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 20px;
+    width: 150px;
+    height: 30px;
+}
+
+.btn-detail-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+}
+
+/* Halaman Details */
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    text-align: center !important;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.page-value {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.text-value {
+    margin-top: 5px;
+    font-size: 50px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.title-value {
+    font-size: 25px;
+}
+
+/* Table */
+/* Table Temperature */
+#table_temperature_wrapper > .row:first-child ,
+#table_temperature_wrapper > .row:last-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    margin: 2px 0;
+}
+
+#table_temperature_wrapper > .row:first-child > div,
+#table_temperature_wrapper > .row:last-child > div {
+    width: 50%;
+} 
+#table_temperature_wrapper > .row:first-child > div:first-child,
+#table_temperature_wrapper > .row:last-child > div:first-child{
+    display: flex;
+    justify-content: start;
+}
+#table_temperature_wrapper > .row:first-child > div:last-child,
+#table_temperature_wrapper > .row:last-child > div:last-child{
+    display: flex;
+    justify-content: end;
+}
+
+#table_temperature_wrapper > .row:last-child > div:first-child >div{
+    padding: 3 !important;
+}
+
+/* Table Humidity */
+#table_humidity_wrapper > .row:first-child ,
+#table_humidity_wrapper > .row:last-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    margin: 2px 0;
+}
+
+#table_humidity_wrapper > .row:first-child > div,
+#table_humidity_wrapper > .row:last-child > div {
+    width: 50%;
+} 
+#table_humidity_wrapper > .row:first-child > div:first-child,
+#table_humidity_wrapper > .row:last-child > div:first-child{
+    display: flex;
+    justify-content: start;
+}
+#table_humidity_wrapper > .row:first-child > div:last-child,
+#table_humidity_wrapper > .row:last-child > div:last-child{
+    display: flex;
+    justify-content: end;
+}
+
+#table_humidity_wrapper > .row:last-child > div:first-child >div{
+    padding: 3 !important;
+}
+
+/* Table Light */
+#table_light_wrapper > .row:first-child ,
+#table_light_wrapper > .row:last-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    margin: 2px 0;
+}
+
+#table_light_wrapper > .row:first-child > div,
+#table_light_wrapper > .row:last-child > div {
+    width: 50%;
+} 
+#table_light_wrapper > .row:first-child > div:first-child,
+#table_light_wrapper > .row:last-child > div:first-child{
+    display: flex;
+    justify-content: start;
+}
+#table_light_wrapper > .row:first-child > div:last-child,
+#table_light_wrapper > .row:last-child > div:last-child{
+    display: flex;
+    justify-content: end;
+}
+
+#table_light_wrapper > .row:last-child > div:first-child >div{
+    padding: 3 !important;
+}
+
+/* Table Water */
+#table_water_wrapper > .row:first-child ,
+#table_water_wrapper > .row:last-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    margin: 2px 0;
+}
+
+#table_water_wrapper > .row:first-child > div,
+#table_water_wrapper > .row:last-child > div {
+    width: 50%;
+} 
+#table_water_wrapper > .row:first-child > div:first-child,
+#table_water_wrapper > .row:last-child > div:first-child{
+    display: flex;
+    justify-content: start;
+}
+#table_water_wrapper > .row:first-child > div:last-child,
+#table_water_wrapper > .row:last-child > div:last-child{
+    display: flex;
+    justify-content: end;
+}
+
+#table_water_wrapper > .row:last-child > div:first-child >div{
+    padding: 3 !important;
+}
+
+/* Table PH */
+#table_ph_wrapper > .row:first-child ,
+#table_ph_wrapper > .row:last-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    margin: 2px 0;
+}
+
+#table_ph_wrapper > .row:first-child > div,
+#table_ph_wrapper > .row:last-child > div {
+    width: 50%;
+} 
+#table_ph_wrapper > .row:first-child > div:first-child,
+#table_ph_wrapper > .row:last-child > div:first-child{
+    display: flex;
+    justify-content: start;
+}
+#table_ph_wrapper > .row:first-child > div:last-child,
+#table_ph_wrapper > .row:last-child > div:last-child{
+    display: flex;
+    justify-content: end;
+}
+
+#table_ph_wrapper > .row:last-child > div:first-child >div{
+    padding: 3 !important;
+}
+
+/* Table PPM */
+#table_ppm_wrapper > .row:first-child ,
+#table_ppm_wrapper > .row:last-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    margin: 2px 0;
+}
+
+#table_ppm_wrapper > .row:first-child > div,
+#table_ppm_wrapper > .row:last-child > div {
+    width: 50%;
+} 
+#table_ppm_wrapper > .row:first-child > div:first-child,
+#table_ppm_wrapper > .row:last-child > div:first-child{
+    display: flex;
+    justify-content: start;
+}
+#table_ppm_wrapper > .row:first-child > div:last-child,
+#table_ppm_wrapper > .row:last-child > div:last-child{
+    display: flex;
+    justify-content: end;
+}
+
+#table_ppm_wrapper > .row:last-child > div:first-child >div{
+    padding: 3 !important;
+}
+
+/* Penjadwalan */
+.judul-mode {
+    margin-top: 5px;
+    margin-left: 25px;
+}
+
+.btn-size {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 520;
+    height: 35px;
+    width: 155px;
+}
+
+.switch-posisi {
+    margin-left: 25px;
+}
+
+.switch-title {
+    margin-left: 10px;
+    font-size: 20px;
+    vertical-align: text-top;
+}
+
+.img-jadwal {
+    display: flex;
+    margin: 0px auto;
+}
+
+.jadwal-status {
+    text-align: center;
+}
+
+.jadwal-status h4 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 7px;
+    margin-bottom: 2px;
+}
+
+.jadwal-status span {
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.title-jadwal {
+    font-size: 16px;
+    font-weight: bold;
+    vertical-align: middle;
+    margin-top: 5px;
+    margin-left: 15px;
+    margin-bottom: 8px;
+}
+
+.col-posisi {
+    margin-right: 0px;
+}
+
+/* Profile */
+.img-profile {
+    margin-top: 20px;
+    border-radius: 50% !important;
+    border-style: none;
+    width: 130px;
+    height: 130px;
+}
+
+.title-profile {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 550;
+}
+
+.status-profile {
+    margin-top: 2px;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #999999!important;
+}
+
+.border-right {
+    border-right: 1px solid #dee2e6 !important;
+}
+
+strong {
+    margin-left: 30px;
+    font-weight: 550;
+    font-size: 15px;
+}
+
+small {
+    margin-bottom: 0px;
+    font-size: 12px;
+    color: #999999 !important;
+}
+
+.text-mute {
+    margin-top: 0px;
+    margin-left: 30px;
+    color: #999999 !important;
+    font-size: 15px;
+}
+
+.text-title {
+    margin-top: 0px;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+.form-control {
+    margin-bottom: 25px;
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 10px);
+    padding: .375rem .75rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.form-control-line {
+    resize: none;
+}
+
+.profile-edit {
+    float: right;
+    background-color: blueviolet;
+    border-radius: 3em;
+    height: 3em;
+    width: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.label-text {
+    margin-bottom: 0px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+/* details */
+.img-posisi {
+    margin: 25px auto 0;
+}
+
+.judul-details {
+    margin-bottom: 0px;
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.value-details {
+    margin-top: 0px;
+    margin-bottom: 3px;
+    font-size: 60px;
+    font-weight: 200;
+    text-align: center;
+}
+
+.text-details {
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+@media only screen and (max-width: 768px) {
+    .table-row-value {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .table-row-value > div:first-child {
+        width: 20%;
+    }
+    .table-row-value > div:last-child {
+        width: 80%;
+    }
+
+    /* Table Temperature */
+    #table_temperature_wrapper > .row:first-child ,
+    #table_temperature_wrapper > .row:last-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 2px 0;
+    }
+    #table_temperature_wrapper > .row:last-child {
+        align-items: top !important;
+    }
+
+    #table_temperature_wrapper > .row:first-child > div,
+    #table_temperature_wrapper > .row:last-child > div {
+        width: 50%;
+    } 
+    #table_temperature_wrapper > .row:first-child > div:first-child,
+    #table_temperature_wrapper > .row:last-child > div:first-child{
+        display: flex;
+        justify-content: start;
+    }
+    #table_temperature_wrapper > .row:first-child > div:last-child,
+    #table_temperature_wrapper > .row:last-child > div:last-child{
+        display: flex;
+        justify-content: end;
+    }
+
+    #table_temperature_wrapper > .row:last-child > div:first-child >div{
+        padding: 3 !important;
+    }
+
+    /* Table Humidity */
+    #table_humidity_wrapper > .row:first-child ,
+    #table_humidity_wrapper > .row:last-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: top;
+        margin: 2px 0;
+    }
+
+    #table_humidity_wrapper > .row:first-child > div,
+    #table_humidity_wrapper > .row:last-child > div {
+        width: 50%;
+    } 
+    #table_humidity_wrapper > .row:first-child > div:first-child,
+    #table_humidity_wrapper > .row:last-child > div:first-child{
+        display: flex;
+        justify-content: start;
+    }
+    #table_humidity_wrapper > .row:first-child > div:last-child,
+    #table_humidity_wrapper > .row:last-child > div:last-child{
+        display: flex;
+        justify-content: end;
+    }
+
+    #table_humidity_wrapper > .row:last-child > div:first-child >div{
+        padding: 3 !important;
+    }
+
+    /* Table Light */
+    #table_light_wrapper > .row:first-child ,
+    #table_light_wrapper > .row:last-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: top;
+        margin: 2px 0;
+    }
+
+    #table_light_wrapper > .row:first-child > div,
+    #table_light_wrapper > .row:last-child > div {
+        width: 50%;
+    } 
+    #table_light_wrapper > .row:first-child > div:first-child,
+    #table_light_wrapper > .row:last-child > div:first-child{
+        display: flex;
+        justify-content: start;
+    }
+    #table_light_wrapper > .row:first-child > div:last-child,
+    #table_light_wrapper > .row:last-child > div:last-child{
+        display: flex;
+        justify-content: end;
+    }
+
+    #table_light_wrapper > .row:last-child > div:first-child >div{
+        padding: 3 !important;
+    }
+
+    /* Table Water */
+    #table_water_wrapper > .row:first-child ,
+    #table_water_wrapper > .row:last-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: top;
+        margin: 2px 0;
+    }
+
+    #table_water_wrapper > .row:first-child > div,
+    #table_water_wrapper > .row:last-child > div {
+        width: 50%;
+    } 
+    #table_water_wrapper > .row:first-child > div:first-child,
+    #table_water_wrapper > .row:last-child > div:first-child{
+        display: flex;
+        justify-content: start;
+    }
+    #table_water_wrapper > .row:first-child > div:last-child,
+    #table_water_wrapper > .row:last-child > div:last-child{
+        display: flex;
+        justify-content: end;
+    }
+
+    #table_water_wrapper > .row:last-child > div:first-child >div{
+        padding: 3 !important;
+    }
+
+    /* Table PH */
+    #table_ph_wrapper > .row:first-child ,
+    #table_ph_wrapper > .row:last-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: top;
+        margin: 2px 0;
+    }
+
+    #table_ph_wrapper > .row:first-child > div,
+    #table_ph_wrapper > .row:last-child > div {
+        width: 50%;
+    } 
+    #table_ph_wrapper > .row:first-child > div:first-child,
+    #table_ph_wrapper > .row:last-child > div:first-child{
+        display: flex;
+        justify-content: start;
+    }
+    #table_ph_wrapper > .row:first-child > div:last-child,
+    #table_ph_wrapper > .row:last-child > div:last-child{
+        display: flex;
+        justify-content: end;
+    }
+
+    #table_ph_wrapper > .row:last-child > div:first-child >div{
+        padding: 3 !important;
+    }
+
+    /* Table PPM */
+    #table_ppm_wrapper > .row:first-child ,
+    #table_ppm_wrapper > .row:last-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: top;
+        margin: 2px 0;
+    }
+
+    #table_ppm_wrapper > .row:first-child > div,
+    #table_ppm_wrapper > .row:last-child > div {
+        width: 50%;
+    } 
+    #table_ppm_wrapper > .row:first-child > div:first-child,
+    #table_ppm_wrapper > .row:last-child > div:first-child{
+        display: flex;
+        justify-content: start;
+    }
+    #table_ppm_wrapper > .row:first-child > div:last-child,
+    #table_ppm_wrapper > .row:last-child > div:last-child{
+        display: flex;
+        justify-content: end;
+    }
+
+    #table_ppm_wrapper > .row:last-child > div:first-child >div{
+        padding: 3 !important;
+    }
+}

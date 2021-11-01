@@ -1,0 +1,93 @@
+* {
+	margin: 0px; 
+	padding: 0px; 
+	box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+	font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Body Login */
+.limiter {
+    width: 100%;
+    margin: -60px auto 0;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: #1e90ff;
+}
+
+.wrapper {
+    width: 30%;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 70px 0 80px 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .wrapper {
+        width: 70%;
+    }
+}
+
+/* Form Gambar */
+.form-img {
+    display: block;
+    width: 95px;
+    height: 105px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.form-img img {
+    width: 100%;
+}
+
+/* Form Title */
+.title-atas {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.title-bawah {
+    margin-top: 0px;
+    margin-bottom: 25px;
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* Button */
+.btn-login {
+    border-radius: 10px;
+    width: 100%;
+    height: 35px;
+}
