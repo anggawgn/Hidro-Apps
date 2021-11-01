@@ -30,3 +30,10 @@ Tools for making hydroponic kits
 - NodeJS
 - MySQL
 - MQTT Broker
+
+# How to run the program
+1. First download Text Editor, .[NodeJS](https://nodejs.org/), .[Arduino IDE](https://www.arduino.cc/en/software/)
+2. Install the downloaded software'
+3. Download the file above then extract the file
+4. Open file to Text Editor
+5. To run the file open a terminal by typing "node bin /dev"
